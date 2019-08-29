@@ -1,0 +1,19 @@
+import alquimistasTP.*
+
+describe "Alquimistas Test" {
+
+
+test "Un alquimista tiene criterio si no tiene items de combate"{
+	assert.that(alquimista.tieneCriterio())
+}
+
+test "Un alquimista tiene criterio si tiene un item de combate"{
+	alquimista.agregarItem(bomba)
+	assert.that(alquimista.tieneCriterio())
+}
+
+test "Un alquimista no tiene criterio teniendo items de combate"{
+	alquimista.agregarItem(pocion)
+	assert.notThat(alquimista.tieneCriterio())
+}
+}

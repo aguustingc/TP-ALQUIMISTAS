@@ -28,4 +28,11 @@ test "Un alquimista es buen explorador"{
 test "Un alquimista no es buen explorador"{
 	assert.notThat(alquimista.esBuenExplorador())
 }
+
+test "Capacidad ofensiva de un alquimista es 100"{
+	alquimista.agregarItem(bomba)
+	alquimista.agregarItem(pocion)
+	assert.equals(100,alquimista.capacidadOfensiva())
+}
+
 }

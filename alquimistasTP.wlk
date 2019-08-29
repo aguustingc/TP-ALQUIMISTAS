@@ -33,7 +33,27 @@ object alquimista{
 	
 	method capacidadOfensiva(){
 		return itemsDeCombate.sum{item => item.capacidadOfensiva()}
-	}	
+	}
+	
+	method esProfesional(){
+		return (self.calidadPromedioItems()>50 and self.todosSusItemsDeCombateSonEfectivos() and self.esBuenExplorador())
+	}
+	
+	method calidadPromedioItems(){
+		return sumaDeCalidadDeItems() / sumaDeCantidadDeItems() 
+	}
+
+    method sumaDeCalidadDeItems(){
+        return itemsDeCombate.sum({unItem => unItem.calidad()}) + itemsDeRecoleccion.sum({unItem => unItem.calidad})
+    }
+	
+    method sumaDeCantidadDeItems(){
+        return itemsDeCombate.size() + itemsDeRecoleccion.size()
+    }
+
+	method todosSusItemsDeCombateSonEfectivos(){
+		return itemsDeCombate.all{unItem => unItem.esEfectivo()}
+	}
 }
 
 object bomba{
@@ -46,6 +66,10 @@ object bomba{
 	
 	method capacidadOfensiva(){
 		return danio/2
+	}
+	
+	method calidad(){
+		return 30
 	}
 }
 
@@ -72,6 +96,10 @@ object pocion{
 	
 	method cantidadMaterialesMisticos(){
 		return materiales.count{material => material.esMistico()}
+	}
+	
+	method calidad{
+		return 50
 	}
 }
 
@@ -103,4 +131,8 @@ object debilitador{
     method cantidadDeMateriales(){
         return materiales.size()
     }
+    
+    method calidad{
+		return 10
+	}
 }

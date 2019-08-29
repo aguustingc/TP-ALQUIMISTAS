@@ -35,4 +35,14 @@ test "Capacidad ofensiva de un alquimista es 100"{
 	assert.equals(100,alquimista.capacidadOfensiva())
 }
 
+test "alquimista es profesional"{
+	alquimista.agregarItemDeRecoleccion("red")
+	alquimista.agregarItemDeRecoleccion("cania")
+	alquimista.agregarItemDeRecoleccion("pelota")
+	assert.that(alquimista.esProfesional())
+}
+
+test "alquimista no es profesional"{
+	assert.notThat(alquimista.esProfesional())
+}
 }

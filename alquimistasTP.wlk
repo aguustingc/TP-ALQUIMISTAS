@@ -1,6 +1,7 @@
 object alquimista{
 	
 	var itemsDeCombate = []
+	var itemsDeRecoleccion = []
 	
 	method tieneCriterio(){
 		return self.cantidadDeItemsDeCombateEfectivos() >= self.cantidadDeItemsDeCombate()/2
@@ -11,11 +12,23 @@ object alquimista{
 	}
 	
 	method cantidadDeItemsDeCombateEfectivos(){
-		return itemsDeCombate.count({itemDeCombate => itemDeCombate.esEfectivo()}) //CUENTA LOS QUE CUMPLEN ESE CRITERIO Y TE DICE LA CANTIDAD
+		return itemsDeCombate.count({itemDeCombate => itemDeCombate.esEfectivo()}) 
 	}
 	
 	method agregarItem(unItem){
 		itemsDeCombate.add(unItem)
+	}
+	
+	method esBuenExplorador(){
+		return self.cantidadDeItemsDeRecoleccion() >= 3
+	}
+	
+	method cantidadDeItemsDeRecoleccion(){
+		return itemsDeRecoleccion.size() 
+	}
+	
+	method agregarItemDeRecoleccion(unItem){
+		itemsDeRecoleccion.add(unItem)
 	}
 }
 

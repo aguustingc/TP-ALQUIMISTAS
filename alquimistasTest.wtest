@@ -16,4 +16,16 @@ test "Un alquimista no tiene criterio teniendo items de combate"{
 	alquimista.agregarItem(pocion)
 	assert.notThat(alquimista.tieneCriterio())
 }
+
+test "Un alquimista es buen explorador"{
+	alquimista.agregarItemDeRecoleccion("red")
+	alquimista.agregarItemDeRecoleccion("cania")
+	alquimista.agregarItemDeRecoleccion("pelota")
+	assert.that(alquimista.esBuenExplorador())
+}
+
+
+test "Un alquimista no es buen explorador"{
+	assert.notThat(alquimista.esBuenExplorador())
+}
 }

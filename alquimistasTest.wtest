@@ -18,9 +18,9 @@ test "Un alquimista no tiene criterio teniendo items de combate"{
 }
 
 test "Un alquimista es buen explorador"{
-	alquimista.agregarItemDeRecoleccion("red")
-	alquimista.agregarItemDeRecoleccion("cania")
-	alquimista.agregarItemDeRecoleccion("pelota")
+	alquimista.agregarItemDeRecoleccion(bomba)
+	alquimista.agregarItemDeRecoleccion(bomba)
+	alquimista.agregarItemDeRecoleccion(bomba)
 	assert.that(alquimista.esBuenExplorador())
 }
 
@@ -36,9 +36,9 @@ test "Capacidad ofensiva de un alquimista es 100"{
 }
 
 test "alquimista es profesional"{
-	alquimista.agregarItemDeRecoleccion("red")
-	alquimista.agregarItemDeRecoleccion("cania")
-	alquimista.agregarItemDeRecoleccion("pelota")
+	alquimista.agregarItem(bomba)
+	alquimista.agregarItem(pocion)
+	alquimista.agregarItemDeRecoleccion(bomba)
 	assert.that(alquimista.esProfesional())
 }
 

@@ -40,13 +40,22 @@ object alquimista{
 	}
 	
 	method calidadPromedioItems(){
-		return sumaDeCalidadDeItems() / sumaDeCantidadDeItems() 
+		return self.sumaDeCalidad() / self.sumaDeCantidadDeItems() 
 	}
-
-    method sumaDeCalidadDeItems(){
-        return itemsDeCombate.sum({unItem => unItem.calidad()}) + itemsDeRecoleccion.sum({unItem => unItem.calidad})
-    }
 	
+	method sumaDeCalidad(){
+		return self.calidadItemsCombate() + self.calidadMaterialesRecoleccion() + self.cantidadDeItemsDeRecoleccion()	
+	}
+	
+   	method calidadItemsCombate(){
+ 		return itemsDeCombate.map{item => item.calidad()}.sum()
+ 	}
+ 	method calidadMaterialesRecoleccion(){
+ 		return itemsDeRecoleccion.map{item => item.calidad()}.sum()
+ 	}
+ 	method calidadItemsDeRecoleccion(){
+ 		return 30 + self.calidadMaterialesRecoleccion() / 10
+ 	}
     method sumaDeCantidadDeItems(){
         return itemsDeCombate.size() + itemsDeRecoleccion.size()
     }
@@ -69,7 +78,7 @@ object bomba{
 	}
 	
 	method calidad(){
-		return 30
+		return 80
 	}
 }
 
@@ -98,8 +107,8 @@ object pocion{
 		return materiales.count{material => material.esMistico()}
 	}
 	
-	method calidad{
-		return 50
+	method calidad(){
+		return 100
 	}
 }
 
@@ -132,7 +141,7 @@ object debilitador{
         return materiales.size()
     }
     
-    method calidad{
-		return 10
+    method calidad(){
+		return 150
 	}
 }
